@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinkTrack: shorten a link, see who opens it</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <header class="top"><span class="logo">LinkTrack</span></header>
+
+    <section class="hero">
+      <h1>Paste a link.<br>Share it short.<br>Watch who opens it.</h1>
+      <div class="bar">
+        <input id="urlInput" type="text" inputmode="url" autocomplete="off" spellcheck="false"
+               placeholder="Paste your long link here (Ctrl + V)" aria-label="Long link" autofocus>
+        <button id="pasteBtn" class="quiet" type="button">Paste</button>
+        <button id="shortenBtn" type="button">Shorten</button>
+      </div>
+      <p id="error" class="error" role="alert"></p>
+      <div id="result" class="result hidden">
+        <div><small>Your short link</small><a id="shortLink" target="_blank" rel="noopener"></a></div>
+        <button id="copyBtn" class="quiet" type="button">Copy link</button>
+      </div>
+    </section>
+
+    <section class="ledger">
+      <div class="ledger-head"><h2>Your links</h2><span class="cols"><span>Clicks</span><span>Visitors</span></span></div>
+      <div id="links"></div>
+      <p id="empty" class="empty">No links yet. Paste one above and it will show up here.</p>
+    </section>
+
+    <section id="stats" class="stats hidden">
+      <div class="stats-head">
+        <h2>Stats for <span id="statCode"></span></h2>
+        <button id="closeStats" class="quiet small" type="button">Close</button>
+      </div>
+      <p id="statUrl" class="muted"></p>
+      <div class="totals">
+        <div><b id="sClicks">0</b><small>total clicks</small></div>
+        <div><b id="sVisits">0</b><small>unique visitors</small></div>
+      </div>
+      <div class="breakdown">
+        <div><h3>Device</h3><div id="devices"></div></div>
+        <div><h3>Operating system</h3><div id="os"></div></div>
+        <div><h3>Browser</h3><div id="browsers"></div></div>
+      </div>
+      <h3>Latest clicks</h3>
+      <div class="scroll"><table><thead><tr><th>When</th><th>Device</th><th>System</th><th>Browser</th><th>Came from</th></tr></thead><tbody id="recent"></tbody></table></div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
